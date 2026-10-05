@@ -1,0 +1,53 @@
+<div class="contenedor-formulario">
+  <section class="panel-formulario">
+    <h1>Reservar sala</h1>
+
+    <% if (typeof errores !== "undefined" && errores.length > 0) { %>
+      <div role="alert" class="mensaje-error">
+        <ul>
+          <% errores.forEach(function(err) { %>
+            <li><%= err %></li>
+          <% }) %>
+        </ul>
+      </div>
+    <% } %>
+
+    <form id="formulario" class="formulario-doble" action="/reservas" method="POST">
+      <!-- Columna izquierda -->
+      <div class="columna">
+        <label for="estudiante">Estudiante</label>
+        <input type="text" id="estudiante" name="estudiante" value="<%= valores.estudiante || '' %>" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="<%= valores.email || '' %>" required>
+
+        <label for="sala">Sala</label>
+        <select id="sala" name="sala" required>
+          <% salasPermitidas.forEach((sala) => { %>
+            <option value="<%= sala %>" <%= valores.sala === sala ? 'selected' : '' %>><%= sala %></option>
+          <% }) %>
+        </select>
+      </div>
+
+      <!-- Columna derecha -->
+      <div class="columna">
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" name="fecha" value="<%= valores.fecha || '' %>" required>
+
+        <label for="turno">Turno</label>
+        <select id="turno" name="turno" required>
+          <option value="Mañana" <%= valores.turno === 'Mañana' ? 'selected' : '' %>>Mañana</option>
+          <option value="Tarde" <%= valores.turno === 'Tarde' ? 'selected' : '' %>>Tarde</option>
+          <option value="Noche" <%= valores.turno === 'Noche' ? 'selected' : '' %>>Noche</option>
+        </select>
+
+        <label for="personas">Personas</label>
+        <input type="number" id="personas" name="personas" min="1" max="6" value="<%= valores.personas || '' %>" required>
+      </div>
+    </form>
+
+    <div class="boton-reserva">
+      <button type="submit" form="formulario">Reservar</button>
+    </div>
+  </section>
+</div>

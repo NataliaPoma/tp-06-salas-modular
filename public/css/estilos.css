@@ -1,0 +1,399 @@
+/* ===========================
+   Variables y estilos base
+=========================== */
+:root {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+  background: url('/img/fondo-salas.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  background-color: rgba(30,58,138,0.8);
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ===========================
+   Encabezado y navegación
+=========================== */
+.encabezado {
+  background: #1e3a8a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+.marca {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #d1d5db;
+  text-decoration: none;
+}
+
+.navegacion {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navegacion a {
+  color: #d1d5db;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.navegacion a:hover,
+.navegacion a:focus {
+  color: #ffffff;
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* ===========================
+   Títulos
+=========================== */
+h1, h2 {
+  color: #1e3a8a;
+}
+
+.titulo-salas {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* ===========================
+   Página de inicio
+=========================== */
+.inicio-fondo {
+  background: url('/img/fondo-salas.png') no-repeat center center fixed;
+  background-size: cover;
+  min-height: calc(100vh - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.inicio-overlay {
+  background: rgba(255, 255, 255, 0.85);
+  color: #333;
+  border-radius: 12px;
+  padding: 2rem 3rem;
+  max-width: 800px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.inicio-overlay h1 {
+  color: #1e3a8a;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.inicio-overlay p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.inicio-overlay ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.inicio-overlay li {
+  position: relative;
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.inicio-overlay li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #2563eb;
+  font-weight: bold;
+}
+
+.boton-principal {
+  background: #2563eb;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.boton-principal:hover {
+  background: #1e3a8a;
+}
+
+.boton-secundario {
+  background: #6b7280;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+.boton-secundario:hover {
+  background: #4b5563;
+}
+
+/* ===========================
+   Listado de reservas
+=========================== */
+.titulo-reservas {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 0;
+  background-color: rgba(128,128,128,0.7);
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.grilla-salas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.tarjeta-sala {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 1rem;
+  width: 220px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.tarjeta-sala:hover {
+  transform: translateY(-4px);
+}
+
+.acciones-sala {
+  margin-top: 1rem;
+}
+
+.boton-detalle {
+  background: #2563eb;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.boton-detalle:hover {
+  background: #1e3a8a;
+}
+
+/* ===========================
+   Formulario
+=========================== */
+.contenedor-formulario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px);
+  padding: 1rem;
+}
+
+.panel-formulario {
+  width: 100%;
+  max-width: 700px;
+  background: rgba(229, 231, 235, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  padding: 1.5rem 2rem;
+}
+
+.formulario-doble {
+  display: flex;
+  gap: 2rem;
+}
+
+.formulario-doble .columna {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.formulario-doble input,
+.formulario-doble select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+.boton-reserva {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.boton-reserva button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.boton-reserva button:hover {
+  background: #1e3a8a;
+}
+
+.mensaje-error {
+  background: #ffe0e0;
+  color: #b30000;
+  padding: 0.5rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.mensaje-error ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  text-align: left;
+}
+
+.mensaje-error li {
+  margin-bottom: 0.3rem;
+}
+
+@media (max-width: 600px) {
+  .formulario-doble {
+    flex-direction: column;
+  }
+}
+
+/* ===========================
+   Detalle de reserva
+=========================== */
+.detalle-sala {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  min-height: calc(100vh - 160px);
+}
+
+.tarjeta-detalle {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 2rem;
+  max-width: 500px;
+  text-align: center;
+}
+
+.tarjeta-detalle h1 {
+  color: #2563eb;
+  margin-bottom: 1rem;
+}
+
+.tarjeta-detalle p {
+  margin: 0.5rem 0;
+}
+
+.boton-volver {
+  background: #6b7280;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.boton-volver:hover {
+  background: #4b5563;
+}
+
+/* ===========================
+   Footer
+=========================== */
+footer, .pie {
+  background: #1e3a8a;
+  color: #d1d5db;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+footer small {
+  display: block;
+  margin-top: 5px;
+  color: #f3f4f6;
+}
+
+/* ===========================
+   Accesibilidad: foco visible
+=========================== */
+a:focus, input:focus, select:focus, button:focus {
+  outline: 2px solid #004080;
+  outline-offset: 2px;
+}
+
+/* ===========================
+   No Encontrado
+=========================== */
+.no-encontrado {
+  max-width: 400px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.no-encontrado h2 {
+  margin-bottom: 1rem;
+  color: #1e3a8a;
+}
+
+.no-encontrado p {
+  margin-bottom: 1rem;
+}

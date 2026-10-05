@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title><%= typeof titulo !== "undefined" ? titulo : "Reservas de Salas" %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <header class="encabezado">
+    <a href="/" class="marca">Reservas de Salas</a>
+    <nav class="navegacion">
+      <a href="/">Inicio</a>
+      <a href="/reservas">Reservas</a>
+      <a href="/reservas/nueva">Nueva Reserva</a>
+    </nav>
+  </header>
+
+  <main>
+    
+    <%- body %>
+  </main>
+
+  <footer>
+    <p>Trabajo práctico 05 - Middleware</p>
+    <small>ID solicitud: <%= solicitudId %></small>
+  </footer>
+</body>
+</html>
