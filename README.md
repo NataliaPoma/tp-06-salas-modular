@@ -64,10 +64,17 @@ index.js
 
 ## Pipeline y contrato de rutas
 Pipeline global:
-1. Morgan (logs).
-2. identificarSolicitud.
-3. medirDuracion.
-4. Routers (`/reservas`).
+Morgan → identificarSolicitud → medirDuracion → layouts → static → urlencoded → json → rutas → router /reservas → 404 final
+
+- **Morgan**: registra todas las solicitudes HTTP.  
+- **identificarSolicitud**: asigna un ID BIB consecutivo.  
+- **medirDuracion**: mide tiempo hasta `finish`.  
+- **layouts**: aplica el layout EJS.  
+- **static**: sirve recursos públicos (CSS, imágenes).  
+- **urlencoded/json**: parsean formularios y JSON.  
+- **rutas**: manejan `/` y `/estado`.  
+- **router /reservas**: gestiona listado, detalle, formulario y POST.  
+- **404 final**: responde con vista `no-encontrado.ejs`.  
 
 Contrato de rutas:
 - `GET /` → inicio.  
@@ -80,25 +87,40 @@ Contrato de rutas:
 ---
 
 ## Matriz antes/después
-| TP5 (index.js) | TP6 (modular) |
-|----------------|---------------|
-| Configuración, controladores y rutas juntos | Separados en módulos |
-| Servicio implícito en array | Servicio en `servicios/reservas.js` |
-| Validación dentro de index | Middleware `reservas.js` |
-| Identificación y duración mezclados | Middleware `solicitudes.js` |
-| Punto de entrada extenso | `index.js` mínimo |
+
+| Caso                       | Esperado         | Evidencia breve                          |
+|----------------------------|------------------|------------------------------------------|
+| GET `/`                    | 200              | Vista inicio con ID BIB visible           |
+| GET `/estado`              | 200              | JSON con cantidad inicial                 |
+| GET `/reservas`            | 200              | Listado con reservas iniciales            |
+| GET `/reservas/nueva`      | 200              | Formulario con campos y select            |
+| GET `/reservas/:id` válido | 200              | Vista detalle con datos                   |
+| GET `/reservas/:id` inexistente | 404        | Vista `no-encontrado.ejs`                 |
+| POST `/reservas` inválido  | 400              | Errores mostrados, sin alta               |
+| POST `/reservas` válido    | 302 → 200        | Nueva reserva en listado y estado         |
+| GET `/css/estilos.css`     | 200              | CSS cargado                               |
+| GET `/url-inexistente`     | 404              | Vista `no-encontrado.ejs`                 |
+| Reinicio                   | 200              | Regreso a la semilla inicial              |
+| Puerto alternativo          | 200              | Responde en puerto configurado            |
+| Puerto inválido             | No inicia        | Mensaje explícito                         |
 
 ---
+
 ## Formato y análisis estático
-- Configuración en eslint.config.js.
+1. Configuración en eslint.config.js.
 
-- Reglas: punto y coma, comillas dobles, indentación 2 espacios, advertencia en variables sin usar.
+2. Reglas: punto y coma, comillas dobles, indentación 2 espacios, advertencia en variables sin usar.
 
-- Comando ejecutado:
-  ```bash
-  npm run lint
-  ```
- Resultado: reporte de estilo y advertencias.
+3. Comando ejecutado:
+- `npm run format` → aplica Prettier sobre `src`.  
+- `npm run format:check` → verifica formato sin modificar.  
+- `npm run lint` → ejecuta ESLint sobre `src`.  
+- `npm run check` → combina `format:check` y `lint`.  
+- `npm start` → inicia la aplicación en el puerto configurado.  
+
+Ejemplo:  
+- `PORT=4000 npm start` → inicia en puerto 4000.  
+- `PORT=99999 npm start` → no inicia, muestra mensaje de error explícito.  
 
 ---
 
